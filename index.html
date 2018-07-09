@@ -1,0 +1,124 @@
+<html>
+<script type="text/javascript" src="./js/jquery.js"></script>
+<script type="text/javascript" src="./js/jsonParser.js"></script>
+<script type="text/javascript" src="./js/rowspanTool.js"></script>
+<body>
+	<style type="text/css">
+		   .data-table,.data-table tr th, .data-table tr td { border:1px solid black; }
+        .data-table { width: 200px; min-height: 25px; line-height: 25px; text-align: center; border-collapse: collapse;}  
+	</style>
+	<div id="content">
+
+	</div>
+	<script type="text/javascript">
+		//创建多个demo表格
+		$(document).ready(function(){
+			var tb = function(id,txt){
+				var html = '<div>'+txt+'</div>\
+				<table id="'+id+'" class="data-table">\
+					<thead>\
+					<tr>\
+						<th>序号</th>\
+						<th>2</th>\
+						<th>3</th>\
+						<th>4</th>\
+					</tr>\
+					</thead>\
+					<tbody>\
+						<tr>\
+							<td>1</td>\
+							<td>a</td>\
+							<td>b</td>\
+							<td>e</td>\
+						</tr>\
+						<tr>\
+							<td>2</td>\
+							<td>a</td>\
+							<td>b</td>\
+							<td>e</td>\
+						</tr>\
+						<tr>\
+							<td>3</td>\
+							<td>a</td>\
+							<td>b</td>\
+							<td>c</td>\
+						</tr>\
+						<tr>\
+							<td>4</td>\
+							<td>a</td>\
+							<td>d</td>\
+							<td>c</td>\
+						</tr>\
+						<tr>\
+							<td>5</td>\
+							<td>a</td>\
+							<td>d</td>\
+							<td>c</td>\
+						</tr>\
+						<tr>\
+							<td>6</td>\
+							<td>a</td>\
+							<td>d</td>\
+							<td>f</td>\
+						</tr>\
+						<tr>\
+							<td>7</td>\
+							<td>a</td>\
+							<td>d</td>\
+							<td>f</td>\
+						</tr>\
+						<tr>\
+							<td>8</td>\
+							<td>a</td>\
+							<td>d</td>\
+							<td>f</td>\
+						</tr>\
+						<tr>\
+							<td>9</td>\
+							<td>a</td>\
+							<td>d</td>\
+							<td>f</td>\
+						</tr>\
+						<tr>\
+							<td>10</td>\
+							<td>a</td>\
+							<td>e</td>\
+							<td>f</td>\
+						</tr>\
+						<tr>\
+							<td>11</td>\
+							<td>a</td>\
+							<td>e</td>\
+							<td>f</td>\
+						</tr>\
+					</tbody>\
+				</table>';
+				return html;
+			}
+			$("#content").append(tb('tb','合并前'));
+			$("#content").append(tb('tb-1','合并3,4'));
+			$("#content").append(tb('tb-2','合并3,4,2'));
+			$("#content").append(tb('tb-3','合并2,3,4'));
+		});
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			//3,4
+			RowspanTool.run({
+				tbody:'#tb-1 tbody',
+				columnNumArr:[3,4]
+			});
+			//3,4,2
+			RowspanTool.run({
+				tbody:'#tb-2 tbody',
+				columnNumArr:[3,4,2]
+			});
+			//2,3,4
+			RowspanTool.run({
+				tbody:'#tb-3 tbody',
+				columnNumArr:[2,3,4]
+			});
+		});
+	</script>
+</body>
+</html>
